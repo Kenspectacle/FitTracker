@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "jquery": "^3.7.1",
-    "knockout": "^3.5.1"
+    "knockout": "^3.5.1",
+    "sammy": "^0.7.6"
   }
 }
