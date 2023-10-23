@@ -38,13 +38,13 @@
         </div>
       </nav>
 
-    <div class="home" id="home" >
+    <div class="home">
         <h1>Welcome to the FitTracker!</h1>
 
         <p>You can use this app to improve your fitness level for a better quality of life</p>
     </div>
 
-    <div class="BMI_Calculator" id="BMI_Calculator">
+    <div class="BMI_Calculator">
         <h1>BMI Calculator</h1>
         <h3>used to determined your Body Mass Index based on</h3>
         <span>BMI Categories:</span>
@@ -78,6 +78,25 @@
         <p>Enter your current calories consumption in kcal: <input data-bind="value: caloriesConsumption"/></p>
         <p>Enter your current calories burned in kcal: <input data-bind="value: caloriesBurned"/></p>
         <p>Potentially (if 100% of the calories are in fat) you have gained/burned: <span data-bind="text: fatResult"></span>g of fat today! (negative value means you lost fat)</p>
+    </div>
+    <div class="fitness_checklist">
+        <h1>Fitness Checklist</h1>
+        <p>Go through the list for a healthy day! :)</p>
+        <ul>
+            <li>
+                <input type="checkbox" data-bind="checked: listentry1" id="listentry1">
+                <label for="listentry1">Get 8 hours of sleep</label>
+            </li>
+            <li>
+                <input type="checkbox" data-bind="checked: listentry2" id="listentry2">
+                <label for="listentry2">Do daily workout</label>
+            </li>
+            <li>
+                <input type="checkbox" data-bind="checked: listentry3" id="listentry3">
+                <label for="listentry3">Drink at least 3L of water</label>
+            </li>
+        </ul>
+        <p data-bind="visible: celebrationMSG">Congratulation, you are living a healthy lifestyle!</p>
     </div>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/knockout/build/output/knockout-latest.js"></script>

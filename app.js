@@ -16,7 +16,12 @@ $(document).ready(function () {
         self.ImperialModeBMI = ko.observable(false);
         // Calories Tracker
         self.caloriesConsumption = ko.observable(0);
-        self.caloriesBurned = ko.observable(0)
+        self.caloriesBurned = ko.observable(0);
+
+        // Fitness Checklist
+        self.listentry1 = ko.observable(false);
+        self.listentry2 = ko.observable(false);
+        self.listentry3 = ko.observable(false);
 
         // Behaviour
         self.BMIResult = ko.computed(function () {
@@ -74,31 +79,46 @@ $(document).ready(function () {
             return totalCalories / 5; // each gram of fat is 5 kcal
         }, this);
 
+        // Fitness Checklist message
+        self.celebrationMSG = ko.computed(function () {
+            if(self.listentry1() && self.listentry2() && self.listentry3()) {
+                return true;
+            } else {
+                return false;
+            }
+        }, this);
+
         // Client-side routes
          let app = Sammy(function () {
             this.get('#/', function () {
                 // Show the default section or handle navigation to the homepage
                 self.chosenPage('#/home');
                 $('.home').show();
-                $('.BMI_Calculator, .calories_tracker').hide();
+                $('.BMI_Calculator, .calories_tracker, .fitness_checklist').hide();
             });
 
             this.get('#/home', function () {
                 self.chosenPage('#/home');
                 $('.home').show();
-                $('.BMI_Calculator, .calories_tracker').hide();
+                $('.BMI_Calculator, .calories_tracker, .fitness_checklist').hide();
             });
 
             this.get('#/bmi-calculator', function () {
                 self.chosenPage('#/bmi-calculator');
                 $('.BMI_Calculator').show();
-                $('.home, .calories_tracker').hide();
+                $('.home, .calories_tracker, .fitness_checklist').hide();
             });
 
             this.get('#/calories-tracker', function () {
                 self.chosenPage('#/calories-tracker');
                 $('.calories_tracker').show();
-                $('.home, .BMI_Calculator').hide();
+                $('.home, .BMI_Calculator, .fitness_checklist').hide();
+            });
+
+            this.get('#/fitness-checklist', function () {
+                self.chosenPage('#/fitness-checklist');
+                $('.fitness_checklist').show();
+                $('.home, .BMI_Calculator, .calories_tracker').hide();
             });
         });
 
