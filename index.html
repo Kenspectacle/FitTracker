@@ -27,25 +27,39 @@
     <div class="BMI_Calculator">
         <h1>BMI Calculator</h1>
         <h3>used to determined your Body Mass Index based on</h3>
-        <div class="metricBMI">
+        <span>BMI Categories:</span>
+        <ul>
+            <li>Underweight: under 18.5</li>
+            <li>Healthy Weight: 18.5-24.9</li>
+            <li>Overweight: 25.0-29.9</li>
+            <li>Obesity: above 30.0</li>
+        </ul>
+        <button data-bind="click: metric">Metric mode</button>
+        <button data-bind="click: imperial">Imperial mode</button>
+        <div class="metricBMI" data-bind="visible: MetricModeBMI()">
             <p>Current Mode: Metric System</p>
-            <p>Enter your current weight in kg: <input data-bind="value: weight" /></p>
-            <p>Enter your current height in cm: <input data-bind="value: height" /></p>
+            <p>Enter your current weight in kg: <input data-bind="value: weightKG" /></p>
+            <p>Enter your current height in cm: <input data-bind="value: heightCM" /></p>
             <p>Your current BMI is: <span data-bind="text: BMIResult"></span></p>
             <p>Your BMI category is: <span data-bind="text: BMICategory"></span></p>
         </div>
-        <div class="imperialBMI">
+        <div class="imperialBMI" data-bind="visible: ImperialModeBMI()">
             <p>Current Mode: Imperial System</p>
-            <p>Enter your current weight in kg: <input data-bind="value: weight" /></p>
-            <p>Enter your current height in cm: <input data-bind="value: height" /></p>
+            <p>Enter your current weight in pounds: <input data-bind="value: weightPounds" /></p>
+            <p>Enter your current height in feet: <input data-bind="value: heightFeet" /> and in inches <input data-bind="value: heightInches"/></p>
             <p>Your current BMI is: <span data-bind="text: BMIResult"></span></p>
             <p>Your BMI category is: <span data-bind="text: BMICategory"></span></p>
         </div>
     </div>
+
+    <div class="calories_tracker">
+        <h1>Calories Tracker</h1>
+        <p></p>
+    </div>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/knockout/build/output/knockout-latest.js"></script>
     <script src="node_modules/sammy/lib/min/sammy-latest.min.js"></script>
-    <script type='text/javascript' src='application.js'></script>
+    <script type='text/javascript' src='app.js'></script>
 </body>
 
 </html>
