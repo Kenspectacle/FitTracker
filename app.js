@@ -4,8 +4,9 @@ $(document).ready(function () {
 
     function viewModel() {
         let self = this;
-        // Data
+        // Data //
         self.chosenPage = ko.observable();
+        // BMI Calculator
         self.weightKG = ko.observable(70);
         self.weightPounds = ko.observable(150);
         self.heightCM = ko.observable(170);
@@ -13,6 +14,9 @@ $(document).ready(function () {
         self.heightInches = ko.observable(7);
         self.MetricModeBMI = ko.observable(false);
         self.ImperialModeBMI = ko.observable(false);
+        // Calories Tracker
+        self.caloriesConsumption = ko.observable(0);
+        self.caloriesBurned = ko.observable(0)
 
         // Behaviour
         self.BMIResult = ko.computed(function () {
@@ -61,6 +65,14 @@ $(document).ready(function () {
             self.MetricModeBMI(false);
             self.ImperialModeBMI(true);
         }
+
+        // Calories Tracker fat calculation
+        self.fatResult = ko.computed(function () {
+            let caloriesConsumption = Number(self.caloriesConsumption());
+            let caloriesBurned = Number(self.caloriesBurned());
+            let totalCalories = caloriesConsumption - caloriesBurned;
+            return totalCalories / 5; // each gram of fat is 5 kcal
+        }, this);
 
         // Client-side routes
          let app = Sammy(function () {

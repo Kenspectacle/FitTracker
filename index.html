@@ -74,7 +74,10 @@
 
     <div class="calories_tracker">
         <h1>Calories Tracker</h1>
-        <p></p>
+        <p>Find out how much fat that you potentially burn or gain today!</p>
+        <p>Enter your current calories consumption in kcal: <input data-bind="value: caloriesConsumption"/></p>
+        <p>Enter your current calories burned in kcal: <input data-bind="value: caloriesBurned"/></p>
+        <p>Potentially (if 100% of the calories are in fat) you have gained/burned: <span data-bind="text: fatResult"></span>g of fat today! (negative value means you lost fat)</p>
     </div>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/knockout/build/output/knockout-latest.js"></script>
