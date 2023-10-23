@@ -6,99 +6,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style></style>
     <title>Fit Tracker</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
     <nav class="navbar navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">FitTracker</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#/home">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#/bmi-calculator">BMI Calculator</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#/calories-tracker">Calories Tracker</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#/fitness-checklist">Fitness Checklist</a>
-              </li>
+            <a class="navbar-brand" href="#">FitTracker</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#/bmi-calculator">BMI Calculator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#/calories-tracker">Calories Tracker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#/fitness-checklist">Fitness Checklist</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="home">
+            <h1>Welcome to the FitTracker!</h1>
+
+            <p>You can use this app to improve your fitness level for a better quality of life</p>
+        </div>
+
+        <div class="BMI_Calculator">
+            <h1>BMI Calculator</h1>
+            <h3>used to determined your Body Mass Index based on</h3>
+            <span>BMI Categories:</span>
+            <ul>
+                <li>Underweight: under 18.5</li>
+                <li>Healthy Weight: 18.5-24.9</li>
+                <li>Overweight: 25.0-29.9</li>
+                <li>Obesity: above 30.0</li>
             </ul>
-          </div>
+            <button class="btn btn-dark" data-bind="click: metric">Metric mode</button>
+            <button class="btn btn-dark" data-bind="click: imperial">Imperial mode</button>
+            <div class="metricBMI" data-bind="visible: MetricModeBMI()">
+                <p>Current Mode: Metric System</p>
+                <p>Enter your current weight in kg: <input data-bind="value: weightKG" /></p>
+                <p>Enter your current height in cm: <input data-bind="value: heightCM" /></p>
+                <p>Your current BMI is: <span data-bind="text: BMIResult"></span></p>
+                <p>Your BMI category is: <span data-bind="text: BMICategory"></span></p>
+            </div>
+            <div class="imperialBMI" data-bind="visible: ImperialModeBMI()">
+                <p>Current Mode: Imperial System</p>
+                <p>Enter your current weight in pounds: <input data-bind="value: weightPounds" /></p>
+                <p>Enter your current height in feet: <input data-bind="value: heightFeet" /> and in inches <input
+                        data-bind="value: heightInches" /></p>
+                <p>Your current BMI is: <span data-bind="text: BMIResult"></span></p>
+                <p>Your BMI category is: <span data-bind="text: BMICategory"></span></p>
+            </div>
         </div>
-      </nav>
 
-    <div class="home">
-        <h1>Welcome to the FitTracker!</h1>
-
-        <p>You can use this app to improve your fitness level for a better quality of life</p>
-    </div>
-
-    <div class="BMI_Calculator">
-        <h1>BMI Calculator</h1>
-        <h3>used to determined your Body Mass Index based on</h3>
-        <span>BMI Categories:</span>
-        <ul>
-            <li>Underweight: under 18.5</li>
-            <li>Healthy Weight: 18.5-24.9</li>
-            <li>Overweight: 25.0-29.9</li>
-            <li>Obesity: above 30.0</li>
-        </ul>
-        <button class ="btn btn-dark" data-bind="click: metric">Metric mode</button>
-        <button class ="btn btn-dark" data-bind="click: imperial">Imperial mode</button>
-        <div class="metricBMI" data-bind="visible: MetricModeBMI()">
-            <p>Current Mode: Metric System</p>
-            <p>Enter your current weight in kg: <input data-bind="value: weightKG" /></p>
-            <p>Enter your current height in cm: <input data-bind="value: heightCM" /></p>
-            <p>Your current BMI is: <span data-bind="text: BMIResult"></span></p>
-            <p>Your BMI category is: <span data-bind="text: BMICategory"></span></p>
+        <div class="calories_tracker">
+            <h1>Calories Tracker</h1>
+            <p>Find out how much fat that you potentially burn or gain today!</p>
+            <p>Enter your current calories consumption in kcal: <input data-bind="value: caloriesConsumption" /></p>
+            <p>Enter your current calories burned in kcal: <input data-bind="value: caloriesBurned" /></p>
+            <p>Potentially (if 100% of the calories are in fat) you have gained/burned: <span
+                    data-bind="text: fatResult"></span>g of fat today! (negative value means you lost fat)</p>
         </div>
-        <div class="imperialBMI" data-bind="visible: ImperialModeBMI()">
-            <p>Current Mode: Imperial System</p>
-            <p>Enter your current weight in pounds: <input data-bind="value: weightPounds" /></p>
-            <p>Enter your current height in feet: <input data-bind="value: heightFeet" /> and in inches <input data-bind="value: heightInches"/></p>
-            <p>Your current BMI is: <span data-bind="text: BMIResult"></span></p>
-            <p>Your BMI category is: <span data-bind="text: BMICategory"></span></p>
+        <div class="fitness_checklist">
+            <h1>Fitness Checklist</h1>
+            <p>Go through the list for a healthy day! :)</p>
+            <ul>
+                <li>
+                    <input type="checkbox" data-bind="checked: listentry1" id="listentry1">
+                    <label for="listentry1">Get 8 hours of sleep</label>
+                </li>
+                <li>
+                    <input type="checkbox" data-bind="checked: listentry2" id="listentry2">
+                    <label for="listentry2">Do daily workout</label>
+                </li>
+                <li>
+                    <input type="checkbox" data-bind="checked: listentry3" id="listentry3">
+                    <label for="listentry3">Drink at least 3L of water</label>
+                </li>
+            </ul>
+            <p data-bind="visible: celebrationMSG">Congratulation, you are living a healthy lifestyle!</p>
         </div>
     </div>
 
-    <div class="calories_tracker">
-        <h1>Calories Tracker</h1>
-        <p>Find out how much fat that you potentially burn or gain today!</p>
-        <p>Enter your current calories consumption in kcal: <input data-bind="value: caloriesConsumption"/></p>
-        <p>Enter your current calories burned in kcal: <input data-bind="value: caloriesBurned"/></p>
-        <p>Potentially (if 100% of the calories are in fat) you have gained/burned: <span data-bind="text: fatResult"></span>g of fat today! (negative value means you lost fat)</p>
-    </div>
-    <div class="fitness_checklist">
-        <h1>Fitness Checklist</h1>
-        <p>Go through the list for a healthy day! :)</p>
-        <ul>
-            <li>
-                <input type="checkbox" data-bind="checked: listentry1" id="listentry1">
-                <label for="listentry1">Get 8 hours of sleep</label>
-            </li>
-            <li>
-                <input type="checkbox" data-bind="checked: listentry2" id="listentry2">
-                <label for="listentry2">Do daily workout</label>
-            </li>
-            <li>
-                <input type="checkbox" data-bind="checked: listentry3" id="listentry3">
-                <label for="listentry3">Drink at least 3L of water</label>
-            </li>
-        </ul>
-        <p data-bind="visible: celebrationMSG">Congratulation, you are living a healthy lifestyle!</p>
-    </div>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/knockout/build/output/knockout-latest.js"></script>
     <script src="node_modules/sammy/lib/min/sammy-latest.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <script type='text/javascript' src='app.js'></script>
 </body>
 
