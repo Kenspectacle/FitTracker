@@ -63,6 +63,35 @@ $(document).ready(function () {
         }
 
         // Client-side routes
+         let app = Sammy(function () {
+            this.get('#/', function () {
+                // Show the default section or handle navigation to the homepage
+                self.chosenPage('#/home');
+                $('.home').show();
+                $('.BMI_Calculator, .calories_tracker').hide();
+            });
+
+            this.get('#/home', function () {
+                self.chosenPage('#/home');
+                $('.home').show();
+                $('.BMI_Calculator, .calories_tracker').hide();
+            });
+
+            this.get('#/bmi-calculator', function () {
+                self.chosenPage('#/bmi-calculator');
+                $('.BMI_Calculator').show();
+                $('.home, .calories_tracker').hide();
+            });
+
+            this.get('#/calories-tracker', function () {
+                self.chosenPage('#/calories-tracker');
+                $('.calories_tracker').show();
+                $('.home, .BMI_Calculator').hide();
+            });
+        });
+
+        // Start the Sammy app
+        app.run('#/'); // Automatically adds the #/ to the URL
     };
 
     ko.applyBindings(new viewModel());
